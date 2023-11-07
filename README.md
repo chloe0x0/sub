@@ -19,4 +19,10 @@ Constructing arbitrary boolean circuits with IEEE-754 floating point subtraction
 
 * NOT
 
+## testing
 
+simply run
+
+```console
+> cargo test
+```
