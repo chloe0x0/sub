@@ -51,6 +51,28 @@ To negate an Fbit,
 assert!(fbit_eq!(not(FALSE), TRUE));
 ```
 
+the basic logic gates can be strung together to create arbitrary boolean functions.
+
+For example, to construct a full 1-bit adder:
+
+```Rust
+use sub_rs::*;
+
+fn full_1bit_adder(a: Fbit, b: Fbit. c: Fbit) -> (Fbit, Fbit) {
+    (
+        xor(xor(a,b), c),
+        or(
+            and(xor(a,b), c),
+            and(a,b)
+        )
+    )
+}
+
+fn main() {
+    // add 1 and 1 with 0 for the initial carry bit
+    let (s,c) = full_1bit_adder(TRUE. TRUE, FALSE) // (FALSE, TRUE)
+}
+```
 
 ## testing
 
