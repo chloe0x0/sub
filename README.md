@@ -76,7 +76,7 @@ fn main() {
 }
 ```
 
-or checking whether a 4-bit number is even or odd
+or checking whether an 8-bit number is even or odd
 
 ```Rust
 // only need to check the lsb 5head
