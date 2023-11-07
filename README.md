@@ -17,6 +17,8 @@ Constructing arbitrary boolean circuits with IEEE-754 floating point subtraction
 
 * XOR
 
+* XNOR
+
 * NOT
 
 Following the blog post, $True \triangleq +0.0$ and $False \triangleq -0.0$
