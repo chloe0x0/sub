@@ -1,8 +1,8 @@
 
-// Since we are using IEEE-754, out 'bits' are actually floating point numbers
+// Since we are using IEEE-754, our 'bits' are actually floating point numbers
 pub type Fbit = f32;
 pub type Fbit8 = [Fbit;8];
-// Define out true and false
+// Define our true and false
 pub const FALSE: Fbit = -0.0;
 pub const TRUE: Fbit = 0.0;
 // -0.0 - 0.0 = -0.0, -0.0 - -0.0 = -0.0 (signs agree)
