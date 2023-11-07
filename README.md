@@ -72,7 +72,7 @@ fn full_1bit_adder(a: Fbit, b: Fbit. c: Fbit) -> (Fbit, Fbit) {
 
 fn main() {
     // add 1 and 1 with 0 for the initial carry bit
-    let (s,c) = full_1bit_adder(TRUE. TRUE, FALSE) // (FALSE, TRUE)
+    let (s,c) = full_1bit_adder(TRUE, TRUE, FALSE) // (FALSE, TRUE)
 }
 ```
 
