@@ -47,6 +47,13 @@ assert_ne!(fbit_eq!(TRUE, FALSE));
 assert_ne!(fbit_eq!(FALSE, TRUE));
 ```
 
+To cast an Fbit to a bool
+
+```Rust
+let a: Fbit = TRUE
+let b: bool = to_bool(a);
+```
+
 To negate an Fbit,
 
 ```Rust
