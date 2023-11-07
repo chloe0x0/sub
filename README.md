@@ -42,7 +42,7 @@ for this you have to use the fbit_eq macro
 assert!(fbit_eq!(TRUE, TRUE));
 assert!(fbit_eq!(FALSE, FALSE));
 assert_ne!(fbit_eq!(TRUE, FALSE));
-assert_ne!(fbit_eq!(FALSE< TRUE));
+assert_ne!(fbit_eq!(FALSE, TRUE));
 ```
 
 To negate an Fbit,
