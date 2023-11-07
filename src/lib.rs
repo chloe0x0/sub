@@ -49,6 +49,14 @@ mod test {
     }
 
     #[test]
+    fn test_xnor_table() {
+        assert!(fbit_eq!(xnor(FALSE, FALSE), TRUE));
+        assert!(fbit_eq!(xnor(TRUE, FALSE), FALSE));
+        assert!(fbit_eq!(xnor(FALSE, TRUE), FALSE));
+        assert!(fbit_eq!(xnor(TRUE, TRUE), TRUE));
+    }
+
+    #[test]
     fn test_nand_table() {
         assert!(fbit_eq!(nand(FALSE, FALSE), TRUE));
         assert!(fbit_eq!(nand(TRUE, FALSE), TRUE));

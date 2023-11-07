@@ -13,6 +13,7 @@ pub fn nor(a: Fbit, b: Fbit) -> Fbit { not(or(a,b)) }
 pub fn and(a: Fbit, b: Fbit) -> Fbit { not(or(not(a), not(b))) }
 pub fn nand(a: Fbit, b: Fbit) -> Fbit { not(and(a, b)) }
 pub fn xor(a: Fbit, b: Fbit) -> Fbit { or(and(not(a), b), and(a, not(b))) }
+pub fn xnor(a: Fbit, b: Fbit) -> Fbit { not(xor(a,b)) }
 // macro for checking equality of Fbit types
 // this is needed since -0.0 == 0.0
 #[macro_export]
