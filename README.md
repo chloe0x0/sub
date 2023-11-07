@@ -93,6 +93,10 @@ fn main() {
 }
 ```
 
+```console
+> 42 is even according to IEEE-754 subtraction!"
+```
+
 
 ## testing
 
