@@ -76,6 +76,24 @@ fn main() {
 }
 ```
 
+or checking whether a 4-bit number is even or odd
+
+```Rust
+// only need to check the lsb 5head
+fn is_even(a: Fbit8) -> Fbit { not(a[0]) }
+
+fn main() {
+    let x: u8 = 42;
+    let even = to_bool(is_even(to_fbit8(x)));
+    if even {
+        println!("{} is even according to IEEE-754 subtraction!", x)   
+    } else {
+        println!("{} is odd according to IEEE-754 subtraction!", x)   
+    }
+}
+```
+
+
 ## testing
 
 simply run

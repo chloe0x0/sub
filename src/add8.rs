@@ -30,20 +30,3 @@ pub fn adder(a: Fbit8, b: Fbit8) -> Fbit8 {
 
     [s0, s1, s2, s3, s4, s5, s6, s7]
 }
-
-// Convert a u8 to a array of Fbits 
-pub fn to_fbit8(x: u8) -> Fbit8 {
-    let mut out: Fbit8 = [FALSE;8];
-
-    for i in 0..8 {
-        out[i] = if (x >> i) & 1 == 1 { TRUE } else { FALSE };
-    }
-
-
-    out
-}
-
-// Convert an array of Fbits to a u8 (from the blogpost)
-pub fn from_fbit8(x: Fbit8) -> u8 {
-    (0..8).filter(|i| x[*i].signum() > 0.0).map(|i| 1 << i).sum()
-}
