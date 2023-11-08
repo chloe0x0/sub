@@ -101,7 +101,7 @@ fn main() {
 ```
 
 ```console
-> 42 is even according to IEEE-754 subtraction!"
+> 42 is even according to IEEE-754 subtraction!
 ```
 
 
