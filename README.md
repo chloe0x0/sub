@@ -27,7 +27,7 @@ Construct an ALU using IEEE-754 subtraction.
 
 Following the blog post, $True \triangleq +0.0$ and $False \triangleq -0.0$
 
-A new type is defined to differentiate between our "Boolean" values and just a normal f32 or f64. Since we only really need +0.0 and -0.0, an f32 sufficied.
+A new type is defined to differentiate between our "Boolean" values and just a normal f32 or f64. Since we only really need +0.0 and -0.0, an f32 sufficed.
 
 Sub defines the Fbit, our floating point booleans, as a simple type alliase for an f32.
 
