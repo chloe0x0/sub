@@ -71,7 +71,7 @@ For example, to construct a full 1-bit adder:
 ```Rust
 use sub_rs::*;
 
-fn full_1bit_adder(a: Fbit, b: Fbit. c: Fbit) -> (Fbit, Fbit) {
+fn full_1bit_adder(a: Fbit, b: Fbit, c: Fbit) -> (Fbit, Fbit) {
     (
         xor(xor(a,b), c),
         or(
