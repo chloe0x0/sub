@@ -3,12 +3,10 @@
 pub mod sub;
 pub use sub::*;
 
-pub mod add8;
-pub use add8::*;
-
 #[cfg(test)]
 mod test {
-    use crate::sub::*;
+    use std::cmp::Ordering;
+    use crate::{sub::*, mag_comp4};
 
     #[test]
     fn test_not_table() {
@@ -62,5 +60,25 @@ mod test {
         assert!(fbit_eq!(nand(TRUE, FALSE), TRUE));
         assert!(fbit_eq!(nand(FALSE, TRUE), TRUE));
         assert!(fbit_eq!(nand(TRUE, TRUE), FALSE));
+    }
+
+    fn test_mag_case(a: u8, b: u8) {
+        let (g,e,l) = mag_comp4(to_fbit4(a), to_fbit4(b));
+
+        match a.cmp(&b) {
+            Ordering::Less => { assert!(to_bool(l)) },
+            Ordering::Equal => { assert!(to_bool(e)) },
+            Ordering::Greater => { assert!(to_bool(g)) }
+        }
+    }
+
+    #[test]
+    fn test_mag() {
+        test_mag_case(0, 1);
+        test_mag_case(1, 0);
+        test_mag_case(2, 0);
+        test_mag_case(3, 2);
+        test_mag_case(10, 3);
+        test_mag_case(3, 6);
     }
 }

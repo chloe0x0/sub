@@ -12,10 +12,12 @@ Construct an ALU using IEEE-754 subtraction.
 ## Current logic gates
 
 * AND
+    * supports a 4 input variant
 
 * NAND
 
 * OR
+    * supports a 4 input variant
 
 * NOR
 
@@ -64,7 +66,16 @@ To negate an Fbit,
 assert!(fbit_eq!(not(FALSE), TRUE));
 ```
 
-the basic logic gates can be strung together to create arbitrary boolean functions.
+there are also Fbit4 and Fbit8 types for 4 and 8 bit numbers using IEEE-754 subtraction.
+
+```Rust
+let a: u8 = 42;
+let b: Fbit8 = to_fbit8(a)  // converts 42 to an equivalent array of 8 Fbits
+let c: u8 = 1;
+let d: Fbit4 = to_fbit4(c); // converts 1 to an array of 4 Fbits (panics if the input is outside the range of 4bit binary numbers)
+```
+
+these types can be easily used to construct 8-bit adders and the like.
 
 For example, to construct a full 1-bit adder:
 
@@ -108,6 +119,44 @@ fn main() {
 > 42 is even according to IEEE-754 subtraction!
 ```
 
+A fun example is constructing a 4-bit Magnitude Comparator. Here it is in all of its ~~horrific~~ beautiful glory
+
+```Rust
+/// A fully functional 4-bit Magnitude Comparator using IEEE-754 subtraction
+pub fn mag_comp4(a: Fbit4, b: Fbit4) -> (Fbit, Fbit, Fbit) {
+    let equals: Fbit = and4(
+        xnor(a[0], b[0]),
+        xnor(a[1], b[1]),
+        xnor(a[2], b[2]),
+        xnor(a[3], b[3]),
+    );
+
+    let a_greater: Fbit = or4(
+        and(not(b[3]), a[3]),
+        and(and(a[2], not(b[2])), xnor(a[3], b[3])),
+        and4(a[1], not(b[1]), xnor(a[3], b[3]), xnor(a[2], b[2])),
+        and(and4(a[0], not(b[0]), xnor(a[3], b[3]), xnor(a[2], b[2])), xnor(a[1], b[1]))
+    );
+
+    let a_lesser: Fbit = or4(
+        and(b[3], not(a[3])),
+        and(and(not(a[2]), b[2]), xnor(a[3], b[3])),
+        and4(not(a[1]), b[1], xnor(a[3], b[3]), xnor(a[2], b[2])),
+        and(and4(not(a[0]), b[0], xnor(a[3], b[3]), xnor(a[2], b[2])), xnor(a[1], b[1]))
+    );
+
+    (a_greater, equals, a_lesser)
+}
+```
+
+more familiarly in circuit form,
+
+<p align='center'>
+    <img src="./imgs/comp.png"></img>
+</p>
+
+
+yes there is a lot of repetition but the compiler should take care of it :3
 
 ## testing
 

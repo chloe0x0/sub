@@ -7,12 +7,22 @@ fn is_even(a: Fbit8) -> Fbit {
 }
 
 fn main() {
-    let x: u8 = 42;
+    let a: u8 = 6;
+    let b: u8 = 3;
 
-    let even = is_even(to_fbit8(x));
-    if to_bool(even) {
-        println!("{} is even according to IEEE-754 subtraction!", x)   
+    let (g,e,l) = mag_comp4(
+        to_fbit4(a), to_fbit4(b)
+    );
+
+    println!("{} | {} | {}", to_bool(g), to_bool(e), to_bool(l));
+
+    if to_bool(g) {
+        println!("{} > {}", a, b);
+    } else if to_bool(e) {
+        println!("{} = {}", a, b);
+    } else if to_bool(l) {
+        println!("{} < {}", a, b);
     } else {
-        println!("{} is odd according to IEEE-754 subtraction!", x)   
+        println!("Something fucked happened");
     }
 }
